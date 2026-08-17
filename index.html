@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Baby Doll — Our Story</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070707;
+    color:#f5f0ed;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* cinematic grain */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.06;
+    z-index:999;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+    position:relative;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(116,48,61,.28),
+            transparent 45%
+        ),
+        #070707;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeUp 2s ease;
+}
+
+.small-title{
+    font-size:11px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#b9999d;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(75px,15vw,180px);
+    line-height:.8;
+    font-weight:600;
+    margin:30px 0 20px;
+}
+
+.hero-subtitle{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(20px,4vw,32px);
+    font-style:italic;
+    color:#d8cecb;
+}
+
+.start-button{
+    display:inline-block;
+    margin-top:45px;
+    padding:15px 28px;
+    border:1px solid #74565d;
+    color:white;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:10px;
+    transition:.4s;
+}
+
+.start-button:hover{
+    background:#32171e;
+    border-color:#b98c95;
+    transform:translateY(-3px);
+}
+
+/* SECTIONS */
+
+section{
+    position:relative;
+}
+
+.story-intro{
+    min-height:70vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 25px;
+}
+
+.story-intro-inner{
+    max-width:750px;
+}
+
+.chapter{
+    font-size:11px;
+    letter-spacing:5px;
+    color:#b28b91;
+    text-transform:uppercase;
+}
+
+.story-intro h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(45px,8vw,90px);
+    margin:20px 0;
+}
+
+.story-intro p{
+    color:#aaa;
+    line-height:2;
+    font-size:15px;
+}
+
+/* TIMELINE */
+
+.timeline-section{
+    max-width:1050px;
+    margin:auto;
+    padding:100px 25px;
+}
+
+.timeline{
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:#3a292d;
+}
+
+.memory{
+    width:calc(50% - 50px);
+    margin-bottom:100px;
+    position:relative;
+}
+
+.memory:nth-child(odd){
+    margin-right:auto;
+}
+
+.memory:nth-child(even){
+    margin-left:calc(50% + 50px);
+}
+
+.memory::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    border:1px solid #c4939c;
+    border-radius:50%;
+    background:#070707;
+    top:5px;
+}
+
+.memory:nth-child(odd)::after{
+    right:-56px;
+}
+
+.memory:nth-child(even)::after{
+    left:-56px;
+}
+
+.date{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#b99098;
+    text-transform:uppercase;
+}
+
+.memory h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px;
+    font-weight:600;
+    margin:12px 0 18px;
+}
+
+.memory p{
+    color:#bdb6b3;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.quote{
+    border-left:1px solid #805b64;
+    margin-top:20px;
+    padding-left:18px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    line-height:1.5;
+    color:#eee;
+}
+
+/* FEATURE */
+
+.feature{
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:80px 25px;
+    background:
+        linear-gradient(
+            180deg,
+            #070707,
+            #160b0f,
+            #070707
+        );
+}
+
+.feature-inner{
+    max-width:750px;
+}
+
+.ring{
+    font-size:65px;
+    margin-bottom:25px;
+    animation:float 3s ease-in-out infinite;
+    filter:drop-shadow(0 0 18px #b67d88);
+}
+
+.feature h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(48px,8vw,90px);
+    margin-bottom:25px;
+}
+
+.feature p{
+    color:#aaa;
+    line-height:2;
+    margin-bottom:12px;
+}
+
+/* LETTER */
+
+.letter-section{
+    padding:120px 25px;
+}
+
+.letter-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.letter-title span{
+    font-size:10px;
+    letter-spacing:5px;
+    color:#b99098;
+}
+
+.letter-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(50px,8vw,90px);
+    margin-top:15px;
+}
+
+.letter{
+    max-width:720px;
+    margin:auto;
+    padding:50px 40px;
+    background:
+        linear-gradient(
+            145deg,
+            #171012,
+            #0d0b0c
+        );
+    border:1px solid #302326;
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+}
+
+.letter h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    margin-bottom:30px;
+}
+
+.letter p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;
+    line-height:2;
+    color:#d2cbc8;
+    margin-bottom:20px;
+}
+
+.signature{
+    margin-top:40px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:25px;
+    color:#d3a4ac;
+}
+
+/* END */
+
+.ending{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 25px;
+    background:#050505;
+}
+
+.ending p{
+    font-size:10px;
+    letter-spacing:5px;
+    color:#777;
+    text-transform:uppercase;
+}
+
+.ending h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(60px,12vw,140px);
+    line-height:.8;
+    margin:25px 0;
+}
+
+.heart{
+    color:#c78d98;
+    font-size:28px;
+    margin:25px;
+}
+
+/* MUSIC BUTTON */
+
+.music-button{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:1000;
+    border:1px solid #594047;
+    background:#0c090a;
+    color:white;
+    border-radius:30px;
+    padding:12px 18px;
+    font-size:10px;
+    letter-spacing:2px;
+    cursor:pointer;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .timeline::before{
+        left:7px;
+    }
+
+    .memory,
+    .memory:nth-child(even){
+        width:calc(100% - 35px);
+        margin-left:35px;
+        margin-right:0;
+        margin-bottom:70px;
+    }
+
+    .memory::after,
+    .memory:nth-child(odd)::after,
+    .memory:nth-child(even)::after{
+        left:-33px;
+        right:auto;
+    }
+
+    .memory h3{
+        font-size:34px;
+    }
+
+    .letter{
+        padding:35px 23px;
+    }
+
+    .letter p{
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button class="music-button" onclick="playSong()">
+♫ OUR SONG
+</button>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="small-title">
+For my Baby Doll • Muddula Pellama • Wifey
+</div>
+
+<h1>Baby Doll</h1>
+
+<div class="hero-subtitle">
+A story about us.
+</div>
+
+<a href="#story" class="start-button">
+Begin our story
+</a>
+
+</div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="story-intro" id="story">
+
+<div class="story-intro-inner">
+
+<div class="chapter">
+ACT I
+</div>
+
+<h2>Some stories just happen.</h2>
+
+<p>
+These aren't perfect movie scenes.
+They're ours.
+The little moments, the stupid timing,
+the hugs, the letters,
+the days we didn't want to end.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section class="timeline-section">
+
+<div class="timeline">
+
+
+<!-- APRIL -->
+
+<article class="memory">
+
+<div class="date">
+23 • 04 • 2025
+</div>
+
+<h3>
+The First Chai Date ☕
+</h3>
+
+<p>
+Our first date.
+Just you, me, two cups of chai —
+and the first time you came out
+just to be with me.
+</p>
+
+<div class="quote">
+"And somehow, that little chai date
+became the beginning of my favourite
+kind of memories."
+</div>
+
+</article>
+
+
+<!-- JULY -->
+
+<article class="memory">
+
+<div class="date">
+18 • 07 • 2025
+</div>
+
+<h3>
+One of the Best Days
+</h3>
+
+<p>
+One of the best dates of my life.
+No big explanation needed.
+Some days just stay with you.
+</p>
+
+</article>
+
+
+<!-- AUGUST -->
+
+<article class="memory">
+
+<div class="date">
+15 • 08 • 2025
+</div>
+
+<h3>
+The First Wake-Up Call 🤍
+</h3>
+
+<p>
+I thought you might not come.
+You said "let's see."
+</p>
+
+<p>
+Then at 8:00 AM,
+my phone rang.
+I picked up half asleep…
+and there you were.
+</p>
+
+<div class="quote">
+"My first wake-up call from you."
+</div>
+
+<p>
+And later I saw you wearing
+my favourite white kurthi
+and my favourite perfume.
+</p>
+
+<div class="quote">
+"Some mornings are remembered forever."
+</div>
+
+</article>
+
+
+<!-- SEPTEMBER -->
+
+<article class="memory">
+
+<div class="date">
+06 • 09 • 2025
+</div>
+
+<h3>
+You Are Mine.
+</h3>
+
+<p>
+I came to college for you.
+The exam was optional,
+but I came anyway.
+</p>
+
+<p>
+Then I got hurt.
+I didn't even realise how badly
+I was bleeding until I saw your face.
+</p>
+
+<p>
+You froze for a few seconds.
+Then you came running.
+</p>
+
+<div class="quote">
+"You are mine.
+I don't have OCD for you."
+</div>
+
+<p>
+Your hands were shaking while
+you cleaned my blood.
+I didn't cry.
+You did.
+</p>
+
+<p>
+I went home, did my first aid,
+and came back because I knew
+you would be worrying about me.
+</p>
+
+<div class="quote">
+"And then came that hug."
+</div>
+
+</article>
+
+
+<!-- OCTOBER -->
+
+<article class="memory">
+
+<div class="date">
+13–16 • 10 • 2025
+</div>
+
+<h3>
+The Letter & The First Kiss 💌
+</h3>
+
+<p>
+A small misunderstanding.
+I said I wouldn't meet you
+for the whole week.
+</p>
+
+<p>
+But you still came near me
+before your sir arrived.
+</p>
+
+<p>
+That evening I got your letter.
+</p>
+
+<div class="quote">
+"If I had the chance,
+I would give you a kiss."
+</div>
+
+<p>
+The next day,
+I did it.
+</p>
+
+<div class="quote">
+"Our first kiss."
+</div>
+
+<p>
+And on the 16th came that little
+"miss…"
+before your friend appeared.
+</p>
+
+</article>
+
+
+<!-- NOVEMBER -->
+
+<article class="memory">
+
+<div class="date">
+06 • 11 • 2025
+</div>
+
+<h3>
+The Ring You Gave Me 💍
+</h3>
+
+<p>
+You gave me a ring.
+</p>
+
+<p>
+And that day I wore that superb dress —
+the picture that made you fall
+a little harder.
+</p>
+
+<div class="quote">
+"Aww… I can't explain it."
+</div>
+
+<p>
+I still remember.
+</p>
+
+</article>
+
+
+<!-- DECEMBER 15 -->
+
+<article class="memory">
+
+<div class="date">
+15 • 12 • 2025
+</div>
+
+<h3>
+I Thought I Was Dreaming 🏠
+</h3>
+
+<p>
+I wasn't feeling well.
+I left college halfway through
+the day and couldn't even say
+a proper goodbye.
+</p>
+
+<p>
+I went home and fell asleep.
+</p>
+
+<p>
+I dreamed you came into my room,
+called my name and hugged me.
+</p>
+
+<div class="quote">
+"Then at 4:30 PM…"
+</div>
+
+<p>
+You actually came.
+</p>
+
+<p>
+I opened my eyes and you were
+standing there.
+For a second,
+I genuinely thought I was still dreaming.
+</p>
+
+<p>
+You came just to see me
+and fed me lunch because
+I hadn't eaten.
+</p>
+
+<div class="quote">
+"Some dreams come true at exactly 4:30 PM."
+</div>
+
+</article>
+
+
+<!-- DECEMBER 22-29 -->
+
+<article class="memory">
+
+<div class="date">
+22–29 • 12 • 2025
+</div>
+
+<h3>
+Don't Go Yet → You're Back 🧳
+</h3>
+
+<p>
+You came to my house to help me pack.
+</p>
+
+<p>
+You were sad because you couldn't
+see me for a week.
+You cried and asked me to stay.
+</p>
+
+<p>
+But everything was already done.
+I had to go.
+</p>
+
+<p>
+Seven days later,
+I was finally back.
+</p>
+
+<p>
+You called me from the college mobile
+because you didn't have your own phone.
+You said you wanted to see me.
+</p>
+
+<p>
+I waited near my house.
+You saw me.
+</p>
+
+<div class="quote">
+"And that hug…"
+</div>
+
+<p>
+You hugged me so hard
+like you were making sure
+I wasn't going anywhere again.
+</p>
+
+</article>
+<!-- JANUARY 4 -->
+
+<article class="memory">
+
+<div class="date">
+04 • 01 • 2026
+</div>
+
+<h3>
+The Day We Made It Official 💍
+</h3>
+
+<p>
+Our anniversary.
+A matching hoodie.
+You in that blue frock.
+</p>
+
+<p>
+An empty college staff room.
+No one around.
+Just us.
+</p>
+
+<p>
+I got down on one knee
+and gave you another ring.
+</p>
+
+<div class="quote">
+"The day it became official."
+</div>
+
+<p>
+Then we walked together.
+You held my hand throughout the day.
+</p>
+
+<p>
+And I walked you home.
+</p>
+
+</article>
+
+
+<!-- JANUARY 30 -->
+
+<article class="memory">
+
+<div class="date">
+30 • 01 • 2026
+</div>
+
+<h3>
+Just Us 🫶
+</h3>
+
+<p>
+We went out during the months in between,
+but this day was different.
+</p>
+
+<p>
+There were no people around us.
+No distractions.
+</p>
+
+<div class="quote">
+"Just you and me."
+</div>
+
+</article>
+
+
+<!-- UNDATED -->
+
+<article class="memory">
+
+<div class="date">
+NO DATE NEEDED
+</div>
+
+<h3>
+The Keychain 🔑
+</h3>
+
+<p>
+I wasn't there that day.
+</p>
+
+<p>
+You missed me so badly
+that you held the keychain
+I gave you…
+</p>
+
+<p>
+and fell asleep imagining me.
+</p>
+
+<div class="quote">
+"Even when I wasn't there,
+somehow, a little piece of me was."
+</div>
+
+</article>
+
+
+<!-- AUGUST 4 -->
+
+<article class="memory">
+
+<div class="date">
+04 • 08 • 2026
+</div>
+
+<h3>
+The Almost-Official Proposal 💍
+</h3>
+
+<p>
+I gave you a proper ring.
+</p>
+
+<p>
+Not officially official…
+but definitely real enough
+for my heart.
+</p>
+
+<div class="quote">
+"I didn't have a fancy proposal.
+I just had a ring,
+a stupidly big amount of feelings,
+and one girl I wanted to give it to."
+</div>
+
+</article>
+
+</div>
+</section>
+
+
+<!-- BIG TRANSITION -->
+
+<section class="feature">
+
+<div class="feature-inner">
+
+<div class="ring">
+💍
+</div>
+
+<h2>
+And after all these memories…
+</h2>
+
+<p>
+We've had misunderstandings.
+</p>
+
+<p>
+We've missed each other.
+</p>
+
+<p>
+We've had days where we couldn't talk.
+</p>
+
+<p>
+We've had distance between us.
+</p>
+
+<p>
+<strong>
+But somehow,
+we kept finding our way back to each other.
+</strong>
+</p>
+
+<a href="#letter" class="start-button">
+Open this when you miss me
+</a>
+
+</div>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section class="letter-section" id="letter">
+
+<div class="letter-title">
+
+<span>
+FINAL SCENE
+</span>
+
+<h2>
+For you, Baby Doll.
+</h2>
+
+</div>
+
+
+<div class="letter">
+
+<h3>
+To my Muddula Pellama,
+</h3>
+
+<p>
+If you're reading this on a good day,
+smile.
+</p>
+
+<p>
+If you're reading this on a bad day,
+stay here for a little while.
+</p>
+
+<p>
+I made this because I know
+I can't always be beside you.
+</p>
+
+<p>
+Sometimes there will be distance,
+bad signal,
+busy days,
+misunderstandings,
+and moments when you think
+I'm ignoring you.
+</p>
+
+<p>
+But I wanted you to have a place
+that proves something simple:
+</p>
+
+<div class="quote">
+"I remember."
+</div>
+
+<p>
+I remember your white kurthi.
+Your perfume.
+Your blue frock.
+The rings.
+The letters.
+The chai.
+The hugs.
+Your shaking hands.
+You holding my hand all day.
+You coming to my house.
+You crying when I left.
+You calling because you wanted
+to see me.
+</p>
+
+<p>
+And I remember every time
+you made me feel loved
+in ways I didn't know
+how to explain.
+</p>
+
+<p>
+So whenever you miss me,
+come back here.
+</p>
+
+<p>
+<strong>
+Distance can make it harder
+to see each other.
+It can't make me stop choosing you.
+</strong>
+</p>
+
+<div class="signature">
+Forever yours,<br>
+Your Muddula Husband Garu ❤️
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ENDING -->
+
+<section class="ending">
+
+<div>
+
+<p>
+THE END OF THIS CHAPTER
+</p>
+
+<h2>
+TO BE<br>
+CONTINUED…
+</h2>
+
+<p>
+Because we're still writing this story.
+</p>
+
+<div class="heart">
+♥
+</div>
+
+<p>
+Baby Doll × Muddula Husband Garu
+</p>
+
+</div>
+
+</section>
+
+
+<script>
+
+function playSong(){
+
+    alert(
+        "🎵 Tu Jaane Na ❤️\n\n" +
+        "Add your licensed song link here."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
