@@ -354,6 +354,13 @@ section{
 }
 
 .heart{
+    .credits-name{
+    white-space:nowrap;
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px !important;
+    letter-spacing:1px !important;
+    color:#d3a4ac !important;
+}
     color:#c78d98;
     font-size:28px;
     margin:25px;
@@ -536,9 +543,11 @@ section{
 
 <body>
 
-<button class="music-button" onclick="playSong()">
+<button class="music-button" id="musicButton" onclick="playSong()">
 ♫ OUR SONG
 </button>
+
+<div id="youtubePlayer"></div>
 
 <!-- HERO -->
 
@@ -1248,10 +1257,10 @@ Because we're still writing this story.
 ♥
 </div>
 
-<p>
-Baby Doll × Muddula Husband Garu
+<p class="credits-name">
+Baby Doll × Muddula Husband Garu ❤️
 </p>
-
+    
 </div>
 
 </section>
@@ -1309,15 +1318,40 @@ Now come here and give me a hug. 🫂
 </section>
 
 <script>
+let player;
+let songPlaying = false;
 
 function playSong(){
 
-    alert(
-        "🎵 Tu Jaane Na ❤️\n\n" +
-        "Add your licensed song link here."
-    );
+    if(!player){
+
+        player = document.createElement("iframe");
+
+        player.width = "1";
+        player.height = "1";
+
+        player.src =
+        "https://www.youtube.com/embed/FA_J8XwpCaQ?autoplay=1&loop=1&playlist=FA_J8XwpCaQ";
+
+        player.allow =
+        "autoplay; encrypted-media";
+
+        player.style.position = "fixed";
+        player.style.left = "-10px";
+        player.style.bottom = "-10px";
+        player.style.opacity = "0";
+
+        document.body.appendChild(player);
+
+        songPlaying = true;
+
+        document.getElementById("musicButton").innerHTML =
+        "Ⅱ OUR SONG";
+
+    }
 
 }
+
  function openSecret(){
 
     const message = document.getElementById("secretMessage");
