@@ -433,6 +433,104 @@ section{
         font-size:18px;
     }
 }
+.secret-section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 25px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100,35,48,.25),
+            #050505 65%
+        );
+}
+
+.secret-content{
+    max-width:750px;
+    width:100%;
+}
+
+.secret-question{
+    font-size:10px;
+    letter-spacing:6px;
+    color:#a98289;
+    margin-bottom:20px;
+}
+
+.secret-section h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(55px,10vw,110px);
+    line-height:.9;
+    margin-bottom:40px;
+}
+
+.secret-button{
+    background:transparent;
+    border:1px solid #795860;
+    color:white;
+    padding:16px 30px;
+    font-size:10px;
+    letter-spacing:3px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.secret-button:hover{
+    background:#32171e;
+    border-color:#c298a0;
+    transform:scale(1.04);
+}
+
+.secret-message{
+    display:none;
+    opacity:0;
+    margin-top:60px;
+    animation:secretReveal 2s ease forwards;
+}
+
+.secret-message p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(22px,4vw,30px);
+    line-height:1.7;
+    color:#d5cfcc;
+    margin-bottom:20px;
+}
+
+.secret-love{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(30px,6vw,55px);
+    color:#d5a3ac;
+    margin-top:45px;
+}
+
+.secret-signature{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:23px;
+    color:#a98b91;
+    margin-top:15px;
+}
+
+.final-line{
+    margin-top:60px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    color:#eee;
+}
+
+@keyframes secretReveal{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}    
 </style>
 </head>
 
@@ -1157,7 +1255,58 @@ Baby Doll × Muddula Husband Garu
 </div>
 
 </section>
+<!-- SECRET FINAL SCENE -->
 
+<section class="secret-section">
+
+<div class="secret-content">
+
+<div class="secret-question">
+WAIT…
+</div>
+
+<h2>
+ONE LAST THING.
+</h2>
+
+<button class="secret-button" onclick="openSecret()">
+OPEN IT ❤️
+</button>
+
+<div id="secretMessage" class="secret-message">
+
+<p>
+If you ever feel like I'm far away…
+</p>
+
+<p>
+come here.
+</p>
+
+<p>
+Because somewhere in this little corner
+of the internet,
+there's a version of us that never
+has to say goodbye.
+</p>
+
+<div class="secret-love">
+I LOVE YOU, BABY DOLL. ❤️
+</div>
+
+<div class="secret-signature">
+— Your Muddula Husband Garu
+</div>
+
+<div class="final-line">
+Now come here and give me a hug. 🫂
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 <script>
 
@@ -1169,6 +1318,20 @@ function playSong(){
     );
 
 }
+ function openSecret(){
+
+    const message = document.getElementById("secretMessage");
+
+    message.style.display = "block";
+
+    setTimeout(() => {
+        message.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+    },100);
+
+}   
 
 </script>
 
