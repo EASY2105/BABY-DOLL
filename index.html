@@ -1335,31 +1335,40 @@ function playSong(){
 
     if(!player){
 
-        player = document.createElement("iframe");
+        player = document.createElement("audio");
 
-        player.width = "1";
-        player.height = "1";
-
-        player.src =
-       "./Tu%20Jaane%20Na.mp3";
-        player.allow =
-        "autoplay; encrypted-media";
-
-        player.style.position = "fixed";
-        player.style.left = "-10px";
-        player.style.bottom = "-10px";
-        player.style.opacity = "0";
+        player.src = "./Tu%20Jaane%20Na.mp3";
+        player.autoplay = true;
+        player.loop = false;
 
         document.body.appendChild(player);
+
+        player.play();
 
         songPlaying = true;
 
         document.getElementById("musicButton").innerHTML =
         "Ⅱ OUR SONG";
 
-    }
+    } else {
 
+        if(songPlaying){
+            player.pause();
+            songPlaying = false;
+
+            document.getElementById("musicButton").innerHTML =
+            "▶ OUR SONG";
+
+        } else {
+            player.play();
+            songPlaying = true;
+
+            document.getElementById("musicButton").innerHTML =
+            "Ⅱ OUR SONG";
+        }
+    }
 }
+
 
  function openSecret(){
 
